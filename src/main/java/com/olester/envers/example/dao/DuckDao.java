@@ -1,43 +1,25 @@
 package com.olester.envers.example.dao;
 
-import com.olester.envers.example.model.SimpleDuck;
-import org.hibernate.Session;
+import com.olester.envers.example.model.ComplexDuck;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import java.math.BigDecimal;
 
-
-/**
- * Created with IntelliJ IDEA.
- * User: olivier
- * Date: 09/02/14
- * Time: 12:32
- * To change this template use File | Settings | File Templates.
- */
 @Repository
-public class DuckDao implements IDuckDao {
+public class DuckDao extends HibernateDaoSupport implements IDuckDao {
 
     @Autowired
-    SessionFactory sessionFactory;
-
-
-    public String showTables(){
-
-        SimpleDuck sd = new SimpleDuck();
-        sd.setId(1);
-        sd.setDuckName("coin");
-        sd.setNumberOfFeather(2);
-
-        getSession().save(sd);
-        getSession().flush();
-
-    return "";
+    public DuckDao(SessionFactory factory) {
+        setSessionFactory(factory);
     }
 
-    private Session getSession() {
-        return sessionFactory.getCurrentSession();
+    @Override
+    public void updateComplexDuck(BigDecimal weight) {
+        ComplexDuck complexDuck = getHibernateTemplate().get(ComplexDuck.class, 1l);
+        complexDuck.setWeight(weight);
+        getHibernateTemplate().update(complexDuck);
     }
-
 }

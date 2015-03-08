@@ -2,14 +2,16 @@ package com.olester.envers.example.model;
 
 import org.hibernate.envers.Audited;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
- * Quack Quack !
+ * Quack !
  */
 @Entity
 @Audited
-@Table(name ="SIMPLE_DUCK")
+@Table(name = "SIMPLE_DUCK")
 public class SimpleDuck {
 
     private long id;
@@ -20,10 +22,6 @@ public class SimpleDuck {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_simpleduck")
-    @SequenceGenerator(name = "seq_simpleduck",
-            sequenceName = "seq_simpleduck",
-            allocationSize = 1)
     public long getId() {
         return id;
     }

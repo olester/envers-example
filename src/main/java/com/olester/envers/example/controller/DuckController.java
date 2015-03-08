@@ -7,26 +7,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.math.BigDecimal;
+
 /**
- * Created with IntelliJ IDEA.
- * User: olivier
- * Date: 09/02/14
- * Time: 17:33
- * To change this template use File | Settings | File Templates.
+ * Quack!
  */
 @Controller
-@RequestMapping(value = "/duck")
+@RequestMapping(value = "/")
 public class DuckController {
 
     @Autowired
     private IDuckService duckService;
 
-    @RequestMapping(value = "showTables", method = RequestMethod.GET)
+
+    @RequestMapping(value = "/duck/update", method = RequestMethod.GET)
     @ResponseBody
-    public String displayTables() {
-
-        duckService.showTables();
-
-        return "TOTO";
+    public void addNewDuck() {
+        duckService.updateComplexDuck(new BigDecimal("100"));
+        duckService.updateComplexDuck(new BigDecimal("100.1"));
+        duckService.updateComplexDuck(new BigDecimal("100.01"));
     }
 }

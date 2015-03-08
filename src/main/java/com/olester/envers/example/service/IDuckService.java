@@ -1,12 +1,16 @@
 package com.olester.envers.example.service;
 
+import java.math.BigDecimal;
+
 /**
- * Created with IntelliJ IDEA.
- * User: olivier
- * Date: 09/02/14
- * Time: 12:52
- * To change this template use File | Settings | File Templates.
+ * IDuckService.
  */
 public interface IDuckService {
-    String showTables();
+
+    /**
+     * Add a new duck.
+     *
+     * @return name of
+     */
+    String updateComplexDuck(BigDecimal weight);
 }

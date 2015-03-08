@@ -5,15 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * Created with IntelliJ IDEA.
- * User: olivier
- * Date: 09/02/14
- * Time: 12:40
- * To change this template use File | Settings | File Templates.
- */
+import java.math.BigDecimal;
+
+
 @Service
-@Transactional(readOnly = true)
+@Transactional(readOnly = false)
 public class DuckService implements IDuckService{
 
     @Autowired
@@ -21,9 +17,9 @@ public class DuckService implements IDuckService{
 
 
     @Override
-    public String showTables(){
+    public String updateComplexDuck(BigDecimal weight){
 
-        duckDao.showTables();
+        duckDao.updateComplexDuck(weight);
 
         return "";
     }
