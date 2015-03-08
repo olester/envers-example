@@ -2,7 +2,7 @@
 
 Example project for hibernate-envers.
 
-How-to run ?
+###How-to run ?
 
 mvn clean install
 
